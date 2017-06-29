@@ -1,0 +1,40 @@
+{
+  "name": "anderson",
+  "version": "0.0.0",
+  "description": "Checks your node dependencies for contraband licenses",
+  "main": "index.js",
+  "repository": "git@github.com:bukinoshita/anderson.git",
+  "author": "Bu Kinoshita <bukinoshita@gmail.com>",
+  "scripts": {
+    "test": "xo && ava"
+  },
+  "keywords": [
+    "anderson",
+    "contraband",
+    "node",
+    "npm",
+    "package",
+    "license",
+    "dependencies",
+    "dependency"
+  ],
+  "devDependencies": {
+    "ava": "^0.19.1",
+    "xo": "^0.18.2"
+  },
+  "dependencies": {
+    "js-yaml": "^3.8.4",
+    "read-package": "^0.0.1"
+  },
+  "xo": {
+    "space": true,
+    "semicolon": false,
+    "esnext": true,
+    "rules": {
+      "object-curly-spacing": 0,
+      "no-prototype-builtins": 0,
+      "no-return-assign": 0
+    }
+  },
+  "license": "MIT"
+}
