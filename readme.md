@@ -22,6 +22,9 @@ _You need to add a `.anderson.yml` file in your project, check example [here](ht
 
 _anderson is heavily inspired on [anderson](https://github.com/contraband/anderson)_
 
+Feel free to contribute to this project to improve the code.
+
+
 ## API
 
 ### anderson([options])

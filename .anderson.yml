@@ -7,7 +7,3 @@ whitelist:
 # Anderson will throw an error for licenses on blacklist
 blacklist:
   - GPL
-
-# It will not throw an error if dependency is listed on exceptions (dependency name)
-exceptions:
-  - anderson
