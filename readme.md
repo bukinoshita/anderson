@@ -2,7 +2,7 @@
 
 > Checks your node dependencies for contraband licenses
 
-_Feel free to contribute to this project to improve the code._
+_Feel free to contribute to this project to improve the code, anderson is in **beta** and it's not **stable**._
 
 ## Install
 
