@@ -107,7 +107,5 @@ module.exports = async ({ dev = false, peer = false } = {}) => {
 
   result = [...result, ...dependencies, ...devDependencies, ...peerDependencies]
 
-  console.log(result)
-
   return result
 }

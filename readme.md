@@ -48,7 +48,7 @@ _anderson is heavily inspired on [anderson](https://github.com/contraband/anders
 
 ### anderson([options])
 
-returns a `promise`
+returns an `array`
 
 #### options
 
