@@ -37,7 +37,6 @@ anderson()
     license: 'MIT'
 }]
 */
-// => [dependency1, dependency2, ...]
 ```
 
 _You need to add a `.anderson.yml` file in your project, check example [here](https://github.com/bukinoshita/anderson/blob/master/.anderson.yml)._
