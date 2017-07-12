@@ -16,6 +16,27 @@ $ npm install --save anderson
 const anderson = require('anderson')
 
 anderson()
+
+/*
+[{
+    name: 'chalk',
+    version: '^2.0.1',
+    contraband: false,
+    license: 'MIT'
+  },
+  {
+    name: 'log-symbols',
+    version: '^1.0.2',
+    contraband: false,
+    license: 'MIT'
+  },
+  {
+    name: 'meow',
+    version: '^3.7.0',
+    contraband: false,
+    license: 'MIT'
+}]
+*/
 // => [dependency1, dependency2, ...]
 ```
 
