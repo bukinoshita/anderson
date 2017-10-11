@@ -1,9 +1,3 @@
-# If license is not on whitelist/blacklist, it will throw a warning
-
-# Licenses that are okay to use on project is listed on whitelist
-whitelist:
-  - MIT
-
 # Anderson will throw an error for licenses on blacklist
 blacklist:
   - GPL

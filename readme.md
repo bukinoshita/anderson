@@ -2,7 +2,6 @@
 
 > Checks your node dependencies for contraband licenses
 
-_Feel free to contribute to this project to improve the code, anderson is in **beta** and it's not **stable**._
 
 ## Install
 
@@ -15,7 +14,7 @@ $ npm install --save anderson
 ```js
 const anderson = require('anderson')
 
-anderson()
+await anderson()
 
 /*
 [{
@@ -41,32 +40,14 @@ anderson()
 
 _You need to add a `.anderson.yml` file in your project, check example [here](https://github.com/bukinoshita/anderson/blob/master/.anderson.yml)._
 
-_anderson is heavily inspired on [anderson](https://github.com/contraband/anderson)_
+_anderson is heavily inspired on [anderson](https://github.com/contraband/anderson)._
 
 
 ## API
 
-### anderson([options])
+### anderson()
 
-returns an `array`
-
-#### options
-
-Type: `object`
-
-##### dev
-
-Type: `boolean`<br/>
-Default: false
-
-If `true` it will check dev-dependencies
-
-##### peer
-
-Type: `boolean`<br/>
-Default: false
-
-If `true` it will check peer-dependencies
+returns a `promise`
 
 
 ## Related

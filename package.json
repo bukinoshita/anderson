@@ -18,22 +18,19 @@
     "dependencies",
     "dependency"
   ],
-  "devDependencies": {
-    "ava": "^0.19.1",
-    "xo": "^0.18.2"
-  },
   "dependencies": {
     "js-yaml": "^3.8.4",
     "read-package": "^0.0.1"
   },
+  "devDependencies": {
+    "ava": "^0.19.1",
+    "eslint-config-prettier": "^2.6.0",
+    "xo": "^0.18.2"
+  },
   "xo": {
-    "space": true,
-    "semicolon": false,
-    "esnext": true,
+    "extends": ["prettier"],
     "rules": {
-      "object-curly-spacing": 0,
-      "no-prototype-builtins": 0,
-      "no-return-assign": 0
+      "no-prototype-builtins": 0
     }
   },
   "license": "MIT"

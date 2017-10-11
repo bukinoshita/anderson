@@ -4,108 +4,35 @@ const readAnderson = require('./lib/read-anderson')
 const getDependencies = require('./lib/get-dependencies')
 const licenseSearch = require('./lib/license-search')
 
-module.exports = async ({ dev = false, peer = false } = {}) => {
-  const modules = await licenseSearch()
-  const anderson = await readAnderson()
-  const {
-    dependencies,
-    devDependencies,
-    peerDependencies
-  } = await getDependencies({ dev, peer })
+module.exports = async () => {
+  const { blacklist } = await readAnderson()
+  const { dependencies } = await getDependencies()
+  const licenses = await licenseSearch()
+  const pkgs = []
 
-  let result = []
+  licenses.filter(license => {
+    return dependencies.filter(dependency => {
+      if (license.pkg.name === dependency.name) {
+        const hasList = blacklist ? blacklist : undefined
+        const contraband = hasList
+          ? blacklist.indexOf(license.pkg.license) !== -1
+          : false
+        const pkg = Object.assign(
+          {},
+          {
+            name: license.pkg.name,
+            version: license.pkg.version,
+            license: license.pkg.license,
+            contraband
+          }
+        )
 
-  modules.forEach(module => {
-    dependencies.forEach(dependency => {
-      if (module.pkg.name === dependency.name) {
-        if (anderson && anderson.whitelist) {
-          anderson.whitelist.forEach(license => {
-            if (module.pkg.license !== license) {
-              return (dependency.contraband = true)
-            }
-
-            return (dependency.contraband = false)
-          })
-        }
-
-        if (anderson && anderson.blacklist) {
-          anderson.blacklist.forEach(license => {
-            if (module.pkg.license === license) {
-              return (dependency.contraband = true)
-            }
-
-            return (dependency.contraband = false)
-          })
-        }
-
-        dependency.license = module.pkg.license
-
-        return dependency
+        return pkgs.push(pkg)
       }
+
+      return false
     })
-
-    if (dev) {
-      devDependencies.forEach(dependency => {
-        if (module.pkg.name === dependency.name) {
-          if (anderson && anderson.whitelist) {
-            anderson.whitelist.forEach(license => {
-              if (module.pkg.license !== license) {
-                return (dependency.contraband = true)
-              }
-
-              return (dependency.contraband = false)
-            })
-          }
-
-          if (anderson && anderson.blacklist) {
-            anderson.blacklist.forEach(license => {
-              if (module.pkg.license === license) {
-                return (dependency.contraband = true)
-              }
-
-              return (dependency.contraband = false)
-            })
-          }
-
-          dependency.license = module.pkg.license
-
-          return dependency
-        }
-      })
-    }
-
-    if (peer) {
-      peerDependencies.forEach(dependency => {
-        if (module.pkg.name === dependency.name) {
-          if (anderson && anderson.whitelist) {
-            anderson.whitelist.forEach(license => {
-              if (module.pkg.license !== license) {
-                return (dependency.contraband = true)
-              }
-
-              return (dependency.contraband = false)
-            })
-          }
-
-          if (anderson && anderson.blacklist) {
-            anderson.blacklist.forEach(license => {
-              if (module.pkg.license === license) {
-                return (dependency.contraband = true)
-              }
-
-              return (dependency.contraband = false)
-            })
-          }
-
-          dependency.license = module.pkg.license
-
-          return dependency
-        }
-      })
-    }
   })
 
-  result = [...result, ...dependencies, ...devDependencies, ...peerDependencies]
-
-  return result
+  return pkgs
 }

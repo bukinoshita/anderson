@@ -1,7 +1,7 @@
 'use strict'
 
 import test from 'ava'
-import m from './'
+import m from '.'
 
 test(async t => {
   const n = await m()
